@@ -30,8 +30,8 @@ final class ViewController: UIViewController {
     @IBAction func animateViewPressed() {
         springAnimationView.animation = animations[index].preset.rawValue
         springAnimationView.curve = animations[index].curve.rawValue
-        springAnimationView.force = takeRandomNumber()
-        springAnimationView.duration = takeRandomNumber()
+        springAnimationView.force = animations[index].force
+        springAnimationView.duration = animations[index].duration
         springAnimationView.delay = animations[index].delay
         springAnimationView.animate()
         
@@ -45,8 +45,8 @@ final class ViewController: UIViewController {
     private func updateView() {
         presetTypeLabel.text = animations[index].preset.rawValue
         curveTypeLabel.text = animations[index].curve.rawValue
-        forceValueLabel.text = convertToString(from: takeRandomNumber())
-        durationValueLabel.text = convertToString(from: takeRandomNumber())
+        forceValueLabel.text = convertToString(from: animations[index].force)
+        durationValueLabel.text = convertToString(from: animations[index].duration)
         delayValueLabel.text = convertToString(from: animations[index].delay)
     }
     
