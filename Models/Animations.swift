@@ -15,10 +15,11 @@ struct Animation {
     let delay: CGFloat
     
     static func getAnimations() -> [Animation] {
-        for _ in 1...AnimationPreset.allCases.count {
+        
+        for animation in AnimationPreset.allCases {
             DataManager.shared.animations.append(
                 Animation(
-                    preset: .allCases.randomElement() ?? .squeezeRight,
+                    preset: animation,
                     curve: .allCases.randomElement() ?? .easeIn,
                     delay: 0.3
                 )

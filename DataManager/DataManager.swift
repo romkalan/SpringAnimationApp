@@ -10,13 +10,7 @@ import Foundation
 class DataManager {
     static let shared = DataManager()
     
-    var animations = [
-        Animation(
-            preset: .allCases.randomElement() ?? .squeezeRight,
-            curve: .allCases.randomElement() ?? .easeIn,
-            delay: 0.3
-        )
-    ]
+    var animations: [Animation] = []
     
     private init() {}
 }
