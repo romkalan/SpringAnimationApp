@@ -47,8 +47,6 @@
 			isa = PBXGroup;
 			children = (
 				AD3FF0A629C2FEF300F2186C /* SpringAnimationApp */,
-				AD3FF0C629C321F600F2186C /* DataStore */,
-				AD3FF0C329C30FD700F2186C /* Model */,
 				AD3FF0A529C2FEF300F2186C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -64,6 +62,8 @@
 		AD3FF0A629C2FEF300F2186C /* SpringAnimationApp */ = {
 			isa = PBXGroup;
 			children = (
+				AD3FF0C329C30FD700F2186C /* Model */,
+				AD3FF0C629C321F600F2186C /* DataStore */,
 				AD3FF0BE29C30E8700F2186C /* App */,
 				AD3FF0BF29C30E8F00F2186C /* ViewControllers */,
 				AD3FF0C029C30E9A00F2186C /* Storyboards */,
