@@ -12,11 +12,7 @@ final class ViewController: UIViewController {
     
     @IBOutlet var springAnimationView: SpringView!
     
-    @IBOutlet var presetTypeLabel: UILabel!
-    @IBOutlet var curveTypeLabel: UILabel!
-    @IBOutlet var forceValueLabel: UILabel!
-    @IBOutlet var durationValueLabel: UILabel!
-    @IBOutlet var delayValueLabel: UILabel!
+    @IBOutlet var descriptionLabel: UILabel!
     
     @IBOutlet var springAnimationButton: UIButton!
     
@@ -24,12 +20,13 @@ final class ViewController: UIViewController {
     private lazy var index = Int.random(in: 0..<animations.count)
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         updateView()
     }
     
     @IBAction func animateViewPressed() {
-        springAnimationView.animation = animations[index].preset.rawValue
-        springAnimationView.curve = animations[index].curve.rawValue
+        springAnimationView.animation = animations[index].preset
+        springAnimationView.curve = animations[index].curve
         springAnimationView.force = animations[index].force
         springAnimationView.duration = animations[index].duration
         springAnimationView.delay = animations[index].delay
@@ -38,24 +35,11 @@ final class ViewController: UIViewController {
         updateView()
         
         index = Int.random(in: 0..<animations.count)
-        springAnimationButton.setTitle("Run \(animations[index].preset.rawValue)", for: .normal)
+        springAnimationButton.setTitle("Run \(animations[index].preset)", for: .normal)
     }
     
-// MARK: - Private Methods
     private func updateView() {
-        presetTypeLabel.text = animations[index].preset.rawValue
-        curveTypeLabel.text = animations[index].curve.rawValue
-        forceValueLabel.text = convertToString(from: animations[index].force)
-        durationValueLabel.text = convertToString(from: animations[index].duration)
-        delayValueLabel.text = convertToString(from: animations[index].delay)
-    }
-    
-    private func convertToString(from value: CGFloat) -> String {
-        String(format: "%.1f", value)
-    }
-    
-    private func takeRandomNumber() -> CGFloat {
-        CGFloat.random(in: 0.5...2)
+        descriptionLabel.text = animations[index].description
     }
 }
 
