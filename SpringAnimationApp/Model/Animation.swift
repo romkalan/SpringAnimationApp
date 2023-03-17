@@ -19,7 +19,7 @@ struct Animation {
     }
     
     static func getAnimations() -> [Animation] {
-        DataManager.shared.animations
+        DataManager.shared.addAnimation()
     }
     
     private func convertToString(from value: CGFloat) -> String {

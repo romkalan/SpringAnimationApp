@@ -8,14 +8,23 @@
 import Foundation
 import SpringAnimation
 
+final class DataStore {
+    static let shared = DataStore()
+    
+    var animations: [Animation] = []
+    
+    private init() {}
+}
+
 final class DataManager {
     static let shared = DataManager()
+    let dataStore = DataStore.shared
     
-    var animations: [Animation] {
-        var animations: [Animation] = []
-        
+    private init() {}
+    
+    func addAnimation() -> [Animation] {
         for animation in AnimationPreset.allCases {
-            animations.append(
+            dataStore.animations.append(
                 Animation(
                     preset: animation.rawValue,
                     curve: AnimationCurve.allCases.randomElement()?.rawValue ?? "",
@@ -25,8 +34,6 @@ final class DataManager {
                 )
             )
         }
-        return animations
+        return dataStore.animations
     }
-    
-    private init() {}
 }
