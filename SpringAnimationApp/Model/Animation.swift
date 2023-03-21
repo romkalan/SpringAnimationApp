@@ -5,24 +5,34 @@
 //  Created by Roman Lantsov on 16.03.2023.
 //
 
-import Foundation
-
-struct Animation {
+struct Animation: CustomStringConvertible {
     let preset: String
     let curve: String
-    let force: CGFloat
-    let duration: CGFloat
-    let delay: CGFloat
+    let force: Double
+    let duration: Double
+    let delay: Double
     
     var description: String {
-        " preset: \(preset) \n curve: \(curve) \n force: \(convertToString(from: force)) \n duration: \(convertToString(from: duration)) \n delay: \(convertToString(from: delay))"
+        """
+        preset: \(preset)
+        curve: \(curve)
+        force: \(convertToString(from: force))
+        duration: \(convertToString(from: duration))
+        delay: \(convertToString(from: delay))
+        """
     }
     
-    static func getAnimations() -> [Animation] {
-        DataManager.shared.addAnimation()
+    static func getRandomAnimations() -> Animation {
+        Animation(
+            preset: DataStore.shared.animations.randomElement()?.rawValue ?? "pop",
+            curve: DataStore.shared.curves.randomElement()?.rawValue ?? "linear",
+            force: Double.random(in: 0.5...2),
+            duration: Double.random(in: 0.5...2),
+            delay: 0.3
+        )
     }
     
-    private func convertToString(from value: CGFloat) -> String {
+    private func convertToString(from value: Double) -> String {
         String(format: "%.1f", value)
     }
 }

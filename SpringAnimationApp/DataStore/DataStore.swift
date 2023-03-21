@@ -11,29 +11,8 @@ import SpringAnimation
 final class DataStore {
     static let shared = DataStore()
     
-    var animations: [Animation] = []
+    let animations = AnimationPreset.allCases
+    let curves = AnimationCurve.allCases
     
     private init() {}
-}
-
-final class DataManager {
-    static let shared = DataManager()
-    let dataStore = DataStore.shared
-    
-    private init() {}
-    
-    func addAnimation() -> [Animation] {
-        for animation in AnimationPreset.allCases {
-            dataStore.animations.append(
-                Animation(
-                    preset: animation.rawValue,
-                    curve: AnimationCurve.allCases.randomElement()?.rawValue ?? "",
-                    force: CGFloat.random(in: 0.5...2),
-                    duration: CGFloat.random(in: 0.5...2),
-                    delay: 0.3
-                )
-            )
-        }
-        return dataStore.animations
-    }
 }

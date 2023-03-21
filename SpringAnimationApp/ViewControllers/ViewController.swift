@@ -11,13 +11,10 @@ import SpringAnimation
 final class ViewController: UIViewController {
     
     @IBOutlet var springAnimationView: SpringView!
-    
     @IBOutlet var descriptionLabel: UILabel!
-    
     @IBOutlet var springAnimationButton: UIButton!
     
-    private let animations = Animation.getAnimations()
-    private lazy var index = Int.random(in: 0..<animations.count)
+    private var animations = Animation.getRandomAnimations()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,21 +22,21 @@ final class ViewController: UIViewController {
     }
     
     @IBAction func animateViewPressed() {
-        springAnimationView.animation = animations[index].preset
-        springAnimationView.curve = animations[index].curve
-        springAnimationView.force = animations[index].force
-        springAnimationView.duration = animations[index].duration
-        springAnimationView.delay = animations[index].delay
+        springAnimationView.animation = animations.preset
+        springAnimationView.curve = animations.curve
+        springAnimationView.force = animations.force
+        springAnimationView.duration = animations.duration
+        springAnimationView.delay = animations.delay
         springAnimationView.animate()
         
         updateView()
         
-        index = Int.random(in: 0..<animations.count)
-        springAnimationButton.setTitle("Run \(animations[index].preset)", for: .normal)
+        animations = Animation.getRandomAnimations()
+        springAnimationButton.setTitle("Run \(animations.preset)", for: .normal)
     }
     
     private func updateView() {
-        descriptionLabel.text = animations[index].description
+        descriptionLabel.text = animations.description
     }
 }
 
